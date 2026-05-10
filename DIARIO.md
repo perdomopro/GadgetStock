@@ -20,3 +20,9 @@ Listar productos en landing page
 06/05/2026
 Lista hardcodeada
 Hacerlo con Useeffect
+
+09/05/2026
+Hecho el listado de gadgets de la base de datos
+useFetch
+
+crear tabla y usar mas endpoints
