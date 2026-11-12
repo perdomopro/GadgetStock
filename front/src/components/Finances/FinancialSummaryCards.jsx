@@ -37,19 +37,19 @@ export function FinancialSummaryCards({ summary, soldGadgets = [] }) {
         <div className="card-value value-revenue">
           {formatCurrency(totalRevenue)}
         </div>
-        <p className="card-desc">Gross proceeds realized from all completed sales</p>
+        <p className="card-desc">{t('grossRevenueDesc')}</p>
       </div>
 
       {/* Total Cost Basis */}
       <div className="metric-card">
         <div className="card-header">
           <span className="card-title">{t('colTotalCostFin')}</span>
-          <span className="card-badge badge-neutral">Investment Basis</span>
+          <span className="card-badge badge-neutral">{t('investmentBasis')}</span>
         </div>
         <div className="card-value value-cost">
           {formatCurrency(totalCostSold)}
         </div>
-        <p className="card-desc">Acquisition price plus repair expenditures on sold goods</p>
+        <p className="card-desc">{t('costBasisDesc')}</p>
       </div>
 
       {/* Realized Net Profit */}
@@ -57,7 +57,7 @@ export function FinancialSummaryCards({ summary, soldGadgets = [] }) {
         <div className="card-header">
           <span className="card-title">{t('totalRealizedProfit')}</span>
           <span className={`card-badge ${isProfitPositive ? 'badge-positive' : 'badge-negative'}`}>
-            {isProfitPositive ? 'Profitable' : 'Deficit'}
+            {isProfitPositive ? t('profitable') : t('deficit')}
           </span>
         </div>
         <div className={`card-value ${isProfitPositive ? 'value-positive' : 'value-negative'}`}>
@@ -71,13 +71,13 @@ export function FinancialSummaryCards({ summary, soldGadgets = [] }) {
         <div className="card-header">
           <span className="card-title">{t('averageRoi')}</span>
           <span className={`card-badge ${Number(roi) >= 0 ? 'badge-positive' : 'badge-negative'}`}>
-            Return %
+            {t('returnPct')}
           </span>
         </div>
         <div className={`card-value ${Number(roi) >= 0 ? 'value-positive' : 'value-negative'}`}>
           {Number(roi) > 0 ? `+${Number(roi).toFixed(2)}%` : `${Number(roi).toFixed(2)}%`}
         </div>
-        <p className="card-desc">Capital in stock: {formatCurrency(stockCapital)}</p>
+        <p className="card-desc">{t('stockCapital')}: {formatCurrency(stockCapital)}</p>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { LanguageProvider } from './context/LanguageContext.jsx';
-import { CurrencyProvider } from './context/CurrencyContext.jsx';
+import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
+import { CurrencyProvider, useCurrency } from './context/CurrencyContext.jsx';
 import Header from './components/Header.jsx';
 import MetricCards from './components/Dashboard/MetricCards.jsx';
 import QuickInventory from './components/Dashboard/QuickInventory.jsx';
@@ -11,7 +11,15 @@ import SoldItemsTable from './components/Finances/SoldItemsTable.jsx';
 import { getAllGadgets, getSoldGadgets, getFinancialSummary } from './api/gadgetApi.js';
 import './App.css';
 
+const PROMPTS = {
+  dashboard: 'gadgetstock status',
+  inventory: 'gadgetstock ls --all',
+  finances: 'gadgetstock report --sold',
+};
+
 function GadgetStockApp() {
+  const { language, t } = useLanguage();
+  const { currency } = useCurrency();
   const [activeTab, setActiveTab] = useState('dashboard'); // 'dashboard' | 'inventory' | 'finances'
   const [gadgets, setGadgets] = useState([]);
   const [soldGadgets, setSoldGadgets] = useState([]);
@@ -96,15 +104,21 @@ function GadgetStockApp() {
               className="btn btn-secondary btn-sm"
               onClick={refreshData}
             >
-              Retry
+              {t('retry')}
             </button>
           </div>
         )}
 
+        <div className="prompt-line">
+          <span className="prompt-sign" aria-hidden="true">$</span>
+          <span className="prompt-cmd">{PROMPTS[activeTab]}</span>
+          <span className="prompt-comment"># {t('appSubtitle')}</span>
+        </div>
+
         {loading ? (
           <div className="loading-state">
             <div className="spinner" />
-            <p>Loading GadgetStock data...</p>
+            <p>{t('loading')}</p>
           </div>
         ) : (
           <>
@@ -146,7 +160,12 @@ function GadgetStockApp() {
       </main>
 
       <footer className="app-footer">
-        <p>GadgetStock &copy; 2026 &bull; Secondhand Inventory & Resale Manager</p>
+        <span className={`status-flag ${error ? 'is-error' : loading ? 'is-loading' : ''}`}>
+          {error ? t('apiError') : loading ? '...' : t('apiOk')}
+        </span>
+        <span>{gadgets.length} {t('records')}</span>
+        <span>{language} · {currency}</span>
+        <span className="status-version">gadgetstock v0.1 mvp</span>
       </footer>
     </div>
   );

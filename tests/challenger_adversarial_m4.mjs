@@ -37,9 +37,9 @@ runTest('Both Spanish and English have identical set of keys', () => {
   assert.deepStrictEqual(esKeys, enKeys, 'Key lists are not identical');
 });
 
-runTest('Total key count is 115', () => {
-  assert.strictEqual(Object.keys(translations.es).length, 115);
-  assert.strictEqual(Object.keys(translations.en).length, 115);
+runTest('Total key count is 127', () => {
+  assert.strictEqual(Object.keys(translations.es).length, 127);
+  assert.strictEqual(Object.keys(translations.en).length, 127);
 });
 
 runTest('Core business terms bidirectional mapping', () => {

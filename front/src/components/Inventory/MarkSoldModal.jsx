@@ -17,6 +17,8 @@ function MarkSoldModalContent({ gadget, onClose, onSuccess }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const totalCost = calculateItemTotalCost(gadget);
+  const numericSoldPrice = Number(soldPrice);
+  const estProfit = soldPrice !== '' && !isNaN(numericSoldPrice) ? numericSoldPrice - totalCost : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,6 +96,11 @@ function MarkSoldModalContent({ gadget, onClose, onSuccess }) {
                 disabled={loading}
                 autoFocus
               />
+              {estProfit !== null && (
+                <p className={`est-profit ${estProfit >= 0 ? 'value-positive' : 'value-negative'}`}>
+                  {t('estProfit')}: {estProfit > 0 ? '+' : ''}{formatCurrency(estProfit)}
+                </p>
+              )}
             </div>
           </div>
 

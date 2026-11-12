@@ -25,6 +25,20 @@ export const translations = {
     langSelector: 'Idioma',
     currSelector: 'Moneda',
 
+    // Console UI (status bar, badges, helper copy)
+    apiOk: 'API OK',
+    apiError: 'API ERROR',
+    records: 'registros',
+    grossRevenueDesc: 'Ingresos brutos de todas las ventas completadas',
+    costBasisDesc: 'Precio de compra más reparación de lo vendido',
+    investmentBasis: 'Base de inversión',
+    profitable: 'Rentable',
+    deficit: 'Déficit',
+    gain: 'Ganancia',
+    loss: 'Pérdida',
+    estProfit: 'Ganancia estimada',
+    returnPct: 'Retorno %',
+
     // Financial Metric Cards
     stockCapital: 'Capital en Stock',
     stockCapitalDesc: 'Inversión en artículos disponibles en inventario',
@@ -161,6 +175,20 @@ export const translations = {
     tabFinances: 'Finances & Sales',
     langSelector: 'Language',
     currSelector: 'Currency',
+
+    // Console UI (status bar, badges, helper copy)
+    apiOk: 'API OK',
+    apiError: 'API ERROR',
+    records: 'records',
+    grossRevenueDesc: 'Gross proceeds from all completed sales',
+    costBasisDesc: 'Purchase price plus repairs on sold goods',
+    investmentBasis: 'Investment basis',
+    profitable: 'Profitable',
+    deficit: 'Deficit',
+    gain: 'Gain',
+    loss: 'Loss',
+    estProfit: 'Estimated profit',
+    returnPct: 'Return %',
 
     // Financial Metric Cards
     stockCapital: 'Stock Capital',

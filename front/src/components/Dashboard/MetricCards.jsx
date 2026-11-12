@@ -49,11 +49,14 @@ export function MetricCards({ summary }) {
         <div className="card-header">
           <span className="card-title">{t('roi')}</span>
           <span className={`card-badge ${isRoiPositive ? 'badge-positive' : 'badge-negative'}`}>
-            {isRoiPositive ? '▲ Gain' : '▼ Loss'}
+            {isRoiPositive ? t('gain') : t('loss')}
           </span>
         </div>
         <div className={`card-value ${isRoiPositive ? 'value-positive' : 'value-negative'}`}>
           {Number(roi) > 0 ? `+${Number(roi).toFixed(2)}%` : `${Number(roi).toFixed(2)}%`}
+        </div>
+        <div className="roi-meter" aria-hidden="true">
+          <div style={{ width: `${Math.max(0, Math.min(100, Number(roi) || 0))}%` }} />
         </div>
         <p className="card-desc">{t('roiDesc')}</p>
       </div>
